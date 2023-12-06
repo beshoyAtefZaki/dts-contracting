@@ -142,6 +142,7 @@ def create_quotation(source_name, target_doc=None, ignore_permissions=True):
 						'uom':serv.get("uom"),
 						'reference_item':row.clearance_item,
 					})
+	docs.set_onload("ignore_price_list", True)
 	return docs
 
 

@@ -82,7 +82,8 @@ app_license = "MIT"
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Stock Entry": "contracting.controllers.custom_stock_entry.customStockEntry"
+	"Stock Entry": "contracting.controllers.custom_stock_entry.customStockEntry",
+	"Delivery Note": "contracting.controllers.custom_delivery_note.CustomDeliveryNote",
 }
 
 
@@ -100,7 +101,6 @@ doctype_js = {
 	"Material Request" :"public/js/material_request.js",
 
 }
-
 
 
 
