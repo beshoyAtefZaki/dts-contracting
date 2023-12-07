@@ -75,13 +75,14 @@ frappe.ui.form.on("Clearance", {
     });
   },
   refresh: (frm) => {
-    frm.events.get_cost_centrt(frm)
+    // frm.events.get_cost_centrt(frm)
     frm.fields_dict["insurances"].grid.wrapper.find(".grid-add-row").hide();
     if (
       frm.doc.docstatus == 0 &&
       frm.doc.insurances &&
-      frm.doc.insurances.length == 0
+      frm.doc.insurances.length
     ) {
+      console.log('test')
       frm.add_custom_button(
         __("Check Insurance"),
         function () {
@@ -435,7 +436,7 @@ frappe.ui.form.on("Clearance", {
       },
       'callback': function(res){
           frm.set_value("cost_center", res.message.cost_center)
-          frm.refresh_field("cost_center")
+          // frm.refresh_field("cost_center")
       },
     })
   }

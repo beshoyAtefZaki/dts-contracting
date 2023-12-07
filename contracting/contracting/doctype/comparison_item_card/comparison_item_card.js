@@ -197,7 +197,6 @@ frappe.ui.form.on('Comparison Item Card Stock Item', {
              });
         }
         cur_frm.fields_dict["items"].grid.get_field("item_price").get_query = function(doc) {
-            console.log('test---')
             return {
                 filters: {
                 'item_code': row.item,

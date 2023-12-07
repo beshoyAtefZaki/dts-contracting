@@ -2,7 +2,7 @@ frappe.ui.form.on("Sales Order", {
   setup: function (frm) {
   },
   refresh: function (frm) {
-    frm.events.get_cost_centrt(frm)
+    // frm.events.get_cost_centrt(frm)
     frm.set_query("comparison", function () {
       return {
         filters: {

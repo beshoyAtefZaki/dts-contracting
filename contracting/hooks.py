@@ -116,6 +116,9 @@ doc_events = {
 		"Sales Order" : {
 			"validate": "contracting.contracting.doctype.stock_entry.stock_entry.update_project_cost"
 		} ,
+        "Quotation" : {
+			"validate": "contracting.controllers.quotation.validate_quotation"
+		} ,
 		"Purchase Order": {
 		"on_submit": "contracting.contracting.doctype.purchase_order.purchase_order.update_comparison",
 		"on_cancel": "contracting.contracting.doctype.purchase_order.purchase_order.update_comparison",}

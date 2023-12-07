@@ -94,6 +94,7 @@ class Clearance(Document):
 
 
 				self.total_insurances += row.amount
+			print(f'\n\n\n===>{self.total_insurances}\n\n')
 
 
 			
