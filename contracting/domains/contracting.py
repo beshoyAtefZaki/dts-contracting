@@ -89,6 +89,10 @@ data = {
                 "insert_after":"card_items", 
                 "no_copy":1, 
             },
+
+
+
+            
             
         ],
         'Quotation Item':[
