@@ -84,6 +84,7 @@ app_license = "MIT"
 override_doctype_class = {
 	"Stock Entry": "contracting.controllers.custom_stock_entry.customStockEntry",
 	"Delivery Note": "contracting.controllers.custom_delivery_note.CustomDeliveryNote",
+	"Sales Invoice": "contracting.controllers.custom_sales_invoice.CustomSalesInvoice",
 }
 
 

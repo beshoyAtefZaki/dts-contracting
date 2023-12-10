@@ -88,12 +88,7 @@ data = {
                 "options":"Comparison Item Card Service Item",
                 "insert_after":"card_items", 
                 "no_copy":1, 
-            },
-
-
-
-            
-            
+            },    
         ],
         'Quotation Item':[
             {

@@ -184,17 +184,17 @@ frappe.ui.form.on('Comparison Item Card Stock Item', {
                 // 'qty'			: d.qty,
                 'allow_zero_valuation': 1
             };
-            frm.call({
-                method: "contracting.contracting.doctype.comparison_item_card.comparison_item_card.get_item_details_test",
-                args:{
-                    args:args
-                },
-                callback: function (r) {
-                    // console.log(r.message)
-                    d.uom= r.message.uom
-                    cur_frm.refresh_field("items");
-                },
-             });
+            // frm.call({
+            //     method: "contracting.contracting.doctype.comparison_item_card.comparison_item_card.get_item_details_test",
+            //     args:{
+            //         args:args
+            //     },
+            //     callback: function (r) {
+            //         // console.log(r.message)
+            //         d.uom= r.message.uom
+            //         cur_frm.refresh_field("items");
+            //     },
+            //  });
         }
         cur_frm.fields_dict["items"].grid.get_field("item_price").get_query = function(doc) {
             return {

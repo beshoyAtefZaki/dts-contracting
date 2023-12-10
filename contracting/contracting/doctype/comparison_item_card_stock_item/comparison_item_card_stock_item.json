@@ -39,6 +39,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "item.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -97,7 +98,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-11-21 16:25:02.359192",
+ "modified": "2023-12-10 09:39:09.560361",
  "modified_by": "Administrator",
  "module": "Contracting",
  "name": "Comparison Item Card Stock Item",
