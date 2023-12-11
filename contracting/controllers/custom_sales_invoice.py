@@ -32,7 +32,7 @@ DOMAINS = frappe.get_active_domains()
 class CustomSalesInvoice(SalesInvoice):
 	
 	def set_missing_item_details(self, for_validate=False):
-		if 'contracting' in DOMAINS:
+		if 'Contracting' in DOMAINS:
 			"""set missing item values"""
 			from erpnext.stock.doctype.serial_no.serial_no import get_serial_nos
 
