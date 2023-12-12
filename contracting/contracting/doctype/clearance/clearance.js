@@ -78,9 +78,10 @@ frappe.ui.form.on("Clearance", {
     // frm.events.get_cost_centrt(frm)
     frm.fields_dict["insurances"].grid.wrapper.find(".grid-add-row").hide();
     if (
-      frm.doc.docstatus == 0 &&
-      frm.doc.insurances &&
-      frm.doc.insurances.length
+      frm.doc.docstatus == 0 
+      // &&
+      // frm.doc.insurances &&
+      // frm.doc.insurances.length
     ) {
       console.log('test')
       frm.add_custom_button(
