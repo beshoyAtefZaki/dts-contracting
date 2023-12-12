@@ -81,6 +81,8 @@ def get_data(conditions):
 		,`tabComparison`.tender
 		,`tabComparison`.name as comparison
 		FROM `tabComparison`
+		LEFT JOIN `tabSales Order` 
+		ON 
 	"""
 	frappe.errprint(sql)
 	data = frappe.db.sql(sql,as_dict=1)
