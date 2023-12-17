@@ -2,11 +2,11 @@ from . import __version__ as app_version
 
 app_name = "contracting"
 app_title = "Contracting"
-app_publisher = "dynamic"
-app_description = "Contracting "
+app_publisher = "Dynamic Technology"
+app_description = "Contracting"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "beshoy.atef@dynamiceg.com"
+app_email = "info@dynamiceg.com"
 app_license = "MIT"
 
 # Includes in <head>
@@ -59,12 +59,6 @@ app_license = "MIT"
 # before_install = "contracting.install.before_install"
 # after_install = "contracting.install.after_install"
 
-# Uninstallation
-# ------------
-
-# before_uninstall = "contracting.uninstall.before_uninstall"
-# after_uninstall = "contracting.uninstall.after_uninstall"
-
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
@@ -76,54 +70,94 @@ app_license = "MIT"
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
 # has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Stock Entry": "contracting.controllers.custom_stock_entry.customStockEntry",
+	"Delivery Note": "contracting.controllers.custom_delivery_note.CustomDeliveryNote",
+	"Sales Invoice": "contracting.controllers.custom_sales_invoice.CustomSalesInvoice",
+}
+
+
+
+
+doctype_js = {
+	"Purchase Order" : "public/js/purchase_order.js" ,
+	"Sales Order" : "public/js/sales_order.js" ,
+	"Sales Invoice" : "public/js/sales_invoice.js" ,
+	"Payment Entry" : "public/js/payment_entry.js" ,
+	"Purchase Invoice" : "public/js/purchase_invoice.js" ,
+	"Task" : "contracting/doctype/task/task.js" ,
+	"Stock Entry" : "public/js/stock_entry.js",
+	"Quotation" : "public/js/quotation.js",
+	"Material Request" :"public/js/material_request.js",
+
+}
+
+
+
+
 
 # Document Events
 # ---------------
 # Hook on document methods and events
-
+doc_events = {
+		"Stock Entry" : {
+			"on_submit": "contracting.contracting.doctype.stock_entry.stock_entry.on_submit"
+		} ,
+		"Sales Order" : {
+			"validate": "contracting.contracting.doctype.stock_entry.stock_entry.update_project_cost"
+		} ,
+        "Quotation" : {
+			"validate": "contracting.controllers.quotation.validate_quotation"
+		} ,
+		"Purchase Order": {
+		"on_submit": "contracting.contracting.doctype.purchase_order.purchase_order.update_comparison",
+		"on_cancel": "contracting.contracting.doctype.purchase_order.purchase_order.update_comparison",}
+}
 # doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
+# 	"*": {
+# 		"on_update": "method",
+# 		"on_cancel": "method",
+# 		"on_trash": "method"
 #	}
 # }
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-#	"all": [
-#		"contracting.tasks.all"
-#	],
-#	"daily": [
-#		"contracting.tasks.daily"
-#	],
-#	"hourly": [
-#		"contracting.tasks.hourly"
-#	],
-#	"weekly": [
-#		"contracting.tasks.weekly"
-#	]
-#	"monthly": [
-#		"contracting.tasks.monthly"
-#	]
-# }
-
+scheduler_events = {
+# 	"all": [
+# 		"contracting.tasks.all"
+# 	],
+	"daily": [
+		"contracting.contracting.doctype.comparison.comparison.get_returnable_insurance"
+	],
+# 	"hourly": [
+# 		"contracting.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"contracting.tasks.weekly"
+# 	]
+# 	"monthly": [
+# 		"contracting.tasks.monthly"
+# 	]
+}
+jenv = {
+    "methods": [
+        "get_comparison_item_cards:contracting.contract_api.get_comparison_item_cards",
+    ],
+    "filters": []
+}
 # Testing
 # -------
 
@@ -133,29 +167,21 @@ app_license = "MIT"
 # ------------------------------
 #
 # override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "contracting.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "contracting.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-#	"Task": "contracting.task.get_dashboard_data"
-# }
+
+override_doctype_dashboards = {
+	"Project": "contracting.public.dashboard.project_get_dashboard_data.get_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
-# Request Events
-# ----------------
-# before_request = ["contracting.utils.before_request"]
-# after_request = ["contracting.utils.after_request"]
-
-# Job Events
-# ----------
-# before_job = ["contracting.utils.before_job"]
-# after_job = ["contracting.utils.after_job"]
 
 # User Data Protection
 # --------------------
@@ -185,6 +211,10 @@ user_data_fields = [
 # --------------------------------
 
 # auth_hooks = [
-#	"contracting.auth.validate"
+# 	"contracting.auth.validate"
 # ]
+
+domains = {
+	'Contracting':'contracting.domains.contracting'
+}
 

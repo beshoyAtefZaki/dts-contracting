@@ -1,0 +1,33 @@
+
+
+
+{%- from "templates/print_formats/standard_macros.html" import add_header, render_field, print_value, fieldmeta,
+	get_width, get_align_class with context -%}
+
+{%- from "templates/print_formats/standard_macros.html" import add_header, render_field with context -%}
+
+{% for page in layout %}
+<div class="page-break">
+	<div  id="header-html" class="hidden-pdf" >
+		tttttttttttttttttt
+	</div>
+
+	{% if print_settings.repeat_header_footer %}
+	<div id="footer-html" class="visible-pdf">
+		{% if not no_letterhead and footer %}
+		<div class="letter-head-footer">
+			xxxxxxxxxxxxxxx
+		</div>
+        <div class="letter-head-footer">
+			xxxx---yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+		</div>
+		{% endif %}
+		<p class="text-center small page-number visible-pdf">
+			{{ _("Page {0} of {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}
+		</p>
+	</div>
+	{% endif %}
+
+	
+</div>
+{% endfor %}

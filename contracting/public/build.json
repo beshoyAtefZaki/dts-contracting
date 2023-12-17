@@ -1,0 +1,10 @@
+
+
+
+{
+    
+    "js/erpnext.min.js": [
+        "public/js/conf.js"
+    ]
+}
+
